@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}-kk博客</title>
+    <!-- 引入 bootstrap.min.css -->
+    <link rel="stylesheet" href="{% static 'bootstrap5/bootstrap.min.css' %}">
+    <!-- 因为 bootstrap.min.js 依赖于 popper.min.js 所以先执行 popper.min.js包 -->
+    <script src="{% static 'bootstrap5/popper.min.js' %}"></script>
+    <script src="{% static 'bootstrap5/bootstrap.min.js' %}"></script>
+    <!-- 引入首页的样式文件 -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header class="pt-3 mb-3 border-bottom">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <img src="{% static 'image/blog_pic.jpg' %}" alt="mdo" width="32" height="32" class="rounded-circle">
+              <li><a href="#" class="nav-link px-2 link-dark">首页</a></li>
+              <li><a href="#" class="nav-link px-2 link-dark">发布博客</a></li>
+              <li><a href="#" class="nav-link px-2 link-dark">笔记</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+              <input type="search" class="form-control input-group-lg" placeholder="搜索..." aria-label="搜索">
+            </form>
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <button type="button" class="btn btn-primary btn-outline-dark me-2">登录</button>
+                <button type="button" class="btn btn-light btn-outline-dark me-2">注册</button>
+            </form>
+          </div>
+        </div>
+    </header>
+
+    {% comment %}
+    这里的p-3代表内边距 m-3代表外边距
+    p-3和m-3代表上下左右都有边距
+    pt-内顶部的边距 pb-内底部的边距
+    mt-外顶部的边距 mb-外底部的边距
+    bg-white代表背景颜色是白色的
+    rounded代表圆角
+    {% endcomment %}
+    <main class="container bg-white p-4 rounded">
+        {% block main %}{% endblock %}
+    </main>
+</body>
+</html>
