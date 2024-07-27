@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}博客详情{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block main %}
+    <h1>Django笔记</h1>
+    <hr>
+    <div class="mt-2">
+        <img src="{% static "image/blog_pic.jpg" %}" height="32" width="32" class="rounded-circle">
+        <span class="ms-2">Fakerkaikai</span>
+        <span class="ms-2">于</span>
+        <span class="ms-2">2023年11月03日22点33分</span>发布
+    </div>
+    <hr>
+    <div class="py-2">
+        这是博客详情
+    </div>
+    <hr>
+    <div class="mt-2">
+        <h3>评论（10）：</h3>
+        <form action="" method="POST">
+            <div class="mt-2">
+                <input type="text" class="form-control" placeholder="请输入评论">
+            </div>
+            <div class="text-end mt-2">
+                <button type="button" class="btn btn-primary btn-outline-dark">评论</button>
+            </div>
+        </form>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item mb-1">
+            <div class="d-flex justify-content-between text-body-tertiary">
+                <div class="user-info">
+                    <img src="{% static 'image/blog_pic.jpg' %}" height="40" width="40" class="rounded-circle">
+                    <span class="ms-1">Fakerkaikai</span>
+                </div>
+
+                <div class="creat-time" style="line-height: 40px">发布时间：2024-01-23 11:29</div>
+            </div>
+            <div class="mt-3 ps-3">
+                这是评论的内容
+            </div>
+        </li>
+        <li class="list-group-item mb-1">
+            <div class="d-flex justify-content-between text-body-tertiary">
+                <div class="user-info">
+                    <img src="{% static 'image/blog_pic.jpg' %}" height="40" width="40" class="rounded-circle">
+                    <span class="ms-1">Fakerkaikai</span>
+                </div>
+                <div class="creat-time" style="line-height: 40px">发布时间：2024-01-23 11:29</div>
+            </div>
+            <div class="mt-3 ps-3">
+                这是评论的内容
+            </div>
+        </li>
+    </ul>
+{% endblock %}

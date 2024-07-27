@@ -1,81 +1,33 @@
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>KK Blog</title>
-    <!-- 引入 bootstrap.min.css -->
-    <link rel="stylesheet" href="{% static 'bootstrap5/bootstrap.min.css' %}">
-    <!-- 因为 bootstrap.min.js 依赖于 popper.min.js 所以先执行 popper.min.js包 -->
-    <script src="{% static 'bootstrap5/popper.min.js' %}"></script>
-    <script src="{% static 'bootstrap5/bootstrap.min.js' %}"></script>
-    <!-- 引入首页的样式文件 -->
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-</head>
-<body>
-    <header class="p-3 mb-3 border-bottom">
+{% block title %}首页{% endblock %}
 
-        <div class="container">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-            </a>
+{% block head %}{% endblock %}
 
-
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <img src="{% static 'image/blog_pic.jpg' %}" alt="mdo" width="32" height="32" class="rounded-circle">
-              <li><a href="#" class="nav-link px-2 link-dark">首页</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">发布博客</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">技术</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">生活</a></li>
-            </ul>
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-              <input type="search" class="form-control input-group-lg" placeholder="搜索..." aria-label="搜索">
-            </form>
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <button type="button" class="btn btn-primary btn-outline-dark me-2">登录</button>
-                <button type="button" class="btn btn-light btn-outline-dark me-2">注册</button>
-            </form>
-          </div>
-        </div>
-    </header>
-
-    {% comment %}
-    这里的p-3代表内边距 m-3代表外边距
-    p-3和m-3代表上下左右都有边距
-    pt-内顶部的边距 pb-内底部的边距
-    mt-外顶部的边距 mb-外底部的边距
-    bg-white代表背景颜色是白色的
-    rounded代表圆角
-    {% endcomment %}
-    <main class="container bg-white p-4 rounded">
-        <h1>博客列表</h1>
+{% block main %}
+    <h1>博客列表</h1>
         {% comment %}
             row-cols-2代表每一行展示两页
-            row-gap-3代表每一行之间的间距
+            row-gap-4代表每一行之间的间距
         {% endcomment %}
-        <div class="row mt-4 row-cols-2 row-gap-4">
-            <div class="col">
-                <div class="card">
-                  <div class="card-header">
-
+    <div class="row mt-4 row-cols-2 row-gap-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
                     <a href="#">Django笔记</a>
-                  </div>
-                  <div class="card-body" style="height: 120px">
+                </div>
+                <div class="card-body" style="height: 120px">
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  </div>
-                  <div class="card-footer text-muted d-flex justify-content-between">
-                      <div class="d-flex justify-content-between">
-                          <img src="{% static 'image/blog_pic.jpg' %}" width="24" height="24" class="rounded-circle me-2">
-                          <div>Fakerkaikai</div>
-                      </div>
-                      类型：技术记录
-                      <div>发布时间：2024-01-23 11:29</div>
-                  </div>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between">
+                    <div class="d-flex justify-content-between">
+                        <img src="{% static 'image/blog_pic.jpg' %}" width="24" height="24" class="rounded-circle me-2">
+                        <div>Fakerkaikai</div>
+                    </div>
+                    类型：技术记录
+                    <div>发布时间：2024-01-23 11:29</div>
                 </div>
             </div>
         </div>
-    </main>
-</body>
-</html>
+    </div>
+{% endblock %}
