@@ -1,4 +1,4 @@
 **/.idea/
 **/test.py
 **/db.sqlite3
-**/migrations
+**/migrations/
