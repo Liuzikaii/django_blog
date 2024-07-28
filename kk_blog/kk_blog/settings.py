@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog'
+    'blog',
+    'kkauth',
 ]
 
 MIDDLEWARE = [
@@ -82,8 +83,12 @@ WSGI_APPLICATION = 'kk_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '数据库名称',
+        "USER": '数据库用户名',
+        "PASSWORD": '数据库密码',
+        "HOST": '数据库地址（本地用localhost）',
+        "PORT": '数据库端口',
     }
 }
 
@@ -132,3 +137,14 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# qq邮箱配置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '填你的qq邮箱'
+EMAIL_HOST_PASSWORD = 'qq邮箱授权码(README.md中有说明)'
+DEFAULT_FROM_EMAIL = '填你的qq邮箱'
+
+LOGIN_URL = '/auth/login'
