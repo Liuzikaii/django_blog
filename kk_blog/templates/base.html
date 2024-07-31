@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,33 +13,51 @@
     {% block head %}{% endblock %}
 </head>
 <body>
-    <header class="pt-3 mb-3 border-bottom">
-        <div class="container">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+<header class="pt-3 mb-3 border-bottom">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
             </a>
 
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <img src="{% static 'image/blog_pic.jpg' %}" alt="mdo" width="32" height="32" class="rounded-circle">
-              <li><a href="#" class="nav-link px-2 link-dark">首页</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">发布博客</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">笔记</a></li>
+                <img src="{% static 'image/blog_pic.jpg' %}" alt="mdo" width="32" height="32" class="rounded-circle">
+                <li><a href="#" class="nav-link px-2 link-dark">首页</a></li>
+                <li><a href="{% url 'blog:pub_blog' %}" class="nav-link px-2 link-dark">发布博客</a></li>
+                <li><a href="#" class="nav-link px-2 link-dark">笔记</a></li>
             </ul>
 
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-              <input type="search" class="form-control input-group-lg" placeholder="搜索..." aria-label="搜索">
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="{% url 'blog:search' %}" method="GET">
+                <input type="search" name="q" class="form-control input-group-lg" placeholder="搜索..." aria-label="搜索">
             </form>
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <button type="button" class="btn btn-primary btn-outline-dark me-2">登录</button>
-                <button type="button" class="btn btn-light btn-outline-dark me-2">注册</button>
-            </form>
-          </div>
-        </div>
-    </header>
+            {% comment %}根据settings配置django.contrib.auth.context_processors.auth中获取到user{% endcomment %}
+            {% if user.is_authenticated %}
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="{% static 'image/blog_pic.jpg' %}" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li><a class="dropdown-item" href="{% url 'kkauth:logout' %}">退出登录</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                    <a href="{% url 'kkauth:login' %}" type="button"
+                       class="btn btn-primary btn-outline-dark me-2">登录</a>
+                    <a href="{% url 'kkauth:register' %}" type="button"
+                       class="btn btn-light btn-outline-dark me-2">注册</a>
+                </form>
+            {% endif %}
 
-    {% comment %}
+        </div>
+    </div>
+</header>
+
+{% comment %}
     这里的p-3代表内边距 m-3代表外边距
     p-3和m-3代表上下左右都有边距
     pt-内顶部的边距 pb-内底部的边距
@@ -48,8 +65,8 @@
     bg-white代表背景颜色是白色的
     rounded代表圆角
     {% endcomment %}
-    <main class="container bg-white p-4 rounded">
-        {% block main %}{% endblock %}
-    </main>
+<main class="container bg-white p-4 rounded">
+    {% block main %}{% endblock %}
+</main>
 </body>
 </html>
